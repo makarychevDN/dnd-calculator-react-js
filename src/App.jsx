@@ -1,5 +1,5 @@
 import './App.css'
-import './GenericGroupLayout.css'
+import './styles/GenericGroupLayout.css'
 
 function App() {
 

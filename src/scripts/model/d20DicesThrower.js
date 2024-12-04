@@ -9,7 +9,7 @@ function throwD20(diceCount, sortingMode){
         newDIce.roll();
         addEventListener(newDIce.getUnicRollEventName(), function() {selectCorrectD20Dice(_currentD20Dices, sortingMode)})
     }
-    dispatchEvent(new CustomEvent(getNameOfD20DicesAddedEvent(), {detail: { dices : _currentD20Dices}}));
+    dispatchEvent(new CustomEvent("newD20DicesAdded", {detail: { dices : _currentD20Dices}}));
 
     return _currentCorrectlyDice = selectCorrectD20Dice(_currentD20Dices, sortingMode);
 }
@@ -21,12 +21,8 @@ function selectCorrectD20Dice(dices, sortingMode){
         dices = dices.sort((a, b) => (a.getCurrentValue() - b.getCurrentValue()) * -sortingMode);
     }
 
-    dispatchEvent(new CustomEvent(getNameOfD20CorrectDiceIsSelected(), {detail: { result : dices[0]}}));
+    dispatchEvent(new CustomEvent("correctD20DiceIsSelected", {detail: { result : dices[0]}}));
     return dices[0];
-}
-
-function getNameOfD20DicesAddedEvent(){
-    return "newD20DicesAdded";
 }
 
 function getNameOfD20CorrectDiceIsSelected(){

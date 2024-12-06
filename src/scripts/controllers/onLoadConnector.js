@@ -2,8 +2,8 @@ let advantageThrowModeValue = 1;
 let disadvantageThrowModeValue = -1;
 
 window.onload = function() {
-    addListenersForD20ThrowingButtons();
-    addEventListener("newD20DicesAdded", function(parameter) {drawNewD20DiceButtons(parameter)});
+    //addListenersForD20ThrowingButtons();
+    //addEventListener("newD20DicesAdded", function(parameter) {drawNewD20DiceButtons(parameter)});
     //addListenersToUpdateD20ThrowResults();
         
     //addEventListener("characterIsSetted", function(parameter) {updateCharacterCharacteristicsOnD20Panel(parameter.detail.character)});

@@ -3,9 +3,10 @@ import { useState } from "react";
 function DiceButton(props){
 
     const [currentValue, setCurrentValue] = useState(getRandomInteger(1, props.maxValue));
+    const [styleClasses, setStyleClasses] = useState("d20-button");
 
     return(
-        <button onClick={ () => {(roll(props.maxValue))}}>{currentValue}</button>
+        <button className={styleClasses} onClick={ () => {(roll(props.maxValue))}}>{currentValue}</button>
     );
 
     function roll(maxValue){

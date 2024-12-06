@@ -1,12 +1,13 @@
 import './App.css'
 import ThrowD20Panel from './scripts/components/throwD20Panel'
 import './styles/GenericGroupLayout.css'
+import './styles/DiceButton.css'
 
 function App() {
 
   return (
     <>
-          <div className='generic-gruop-layout' style={{minWidth: "450px"}}>
+      <div className='generic-gruop-layout' style={{minWidth: "450px"}}>
         <div style={{display: "flex", minWidth: "max-content"}}>
           <div>
             <label style={{fontSize: "larger"}}><b>Попадание</b></label>

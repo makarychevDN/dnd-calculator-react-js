@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function DiceButton(props){
 
-    const [currentValue, setCurrentValue] = useState(0);
+    const [currentValue, setCurrentValue] = useState(getRandomInteger(1, props.maxValue));
 
     return(
         <button onClick={ () => {(roll(props.maxValue))}}>{currentValue}</button>

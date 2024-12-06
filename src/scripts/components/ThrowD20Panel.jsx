@@ -1,6 +1,9 @@
+import { useState } from "react"
 import DiceButton from "./DiceButton"
 
 function ThrowD20Panel() {
+
+  const [dices, setDices] = useState([]);
 
   return (
     <>
@@ -22,22 +25,34 @@ function ThrowD20Panel() {
             </div>
             <div><label style={{color: "gray"}}>бонус мастерства 3</label></div>
             <div id="d20-dices-parent" style={{color: "gray"}}>
-              дайс <DiceButton maxValue="20"></DiceButton>
-              <DiceButton maxValue="20"></DiceButton>
+              дайс {dices}
             </div>
           </div>
           <div style={{width: "fit-content", textAlign: "center", marginRight: "40px", marginLeft: "auto", marginTop: "auto", marginBottom: "auto"}}>
-            <div><label style={{fontSize: "xx-large"}}>{sex}</label></div>
+            <div><label style={{fontSize: "xx-large"}}>{1}</label></div>
             <div><label id="d20-mode-label" style={{color: "gray"}}></label></div>
           </div>
         </div>
         <hr/>
-        <button id="throw-d20-button">d20</button>
-        <button id="throw-d20-with-advantage-button">d20 с преимуществом</button>
-        <button id="throw-d20-with-disadvantage-button">d20 с помехой</button>
+        <button id="throw-d20-button" onClick={ () => throwD20(1)}>d20</button>
+        <button id="throw-d20-with-advantage-button" onClick={ () => throwD20(2)}>d20 с преимуществом</button>
+        <button id="throw-d20-with-disadvantage-button" onClick={ () => throwD20(2)}>d20 с помехой</button>
       </div>
     </>
   )
+
+  function throwD20(count){
+    setDices([])
+
+    setTimeout(() => {
+      let diceButtons = [];
+      for(let i = 0; i < count; i++){
+        diceButtons.push(<DiceButton key={i} maxValue="20"/>)
+      }
+  
+      setDices(diceButtons);
+    }, 0);
+  }
 }
 
 export default ThrowD20Panel

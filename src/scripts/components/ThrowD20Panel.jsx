@@ -2,9 +2,11 @@ import { useState } from "react"
 import DiceButton from "./DiceButton"
 
 function ThrowD20Panel() {
-
   const [dices, setDices] = useState([]);
   const [diceValues, setDiceValues] = useState([]);
+  const [selectedDiceValue, setSelectedDiceValue] = useState(0);
+  const [sortingModeString, setSortingModeString] = useState("");
+  let sortingMode = 0;
 
   return (
     <>
@@ -30,23 +32,23 @@ function ThrowD20Panel() {
             </div>
           </div>
           <div style={{width: "fit-content", textAlign: "center", marginRight: "40px", marginLeft: "auto", marginTop: "auto", marginBottom: "auto"}}>
-            <div><label style={{fontSize: "xx-large"}}>{1}</label></div>
-            <div><label id="d20-mode-label" style={{color: "gray"}}></label></div>
+            <div><label style={{fontSize: "xx-large"}}>{selectedDiceValue}</label></div>
+            <div><label id="d20-mode-label" style={{color: "gray"}}>{sortingModeString}</label></div>
           </div>
         </div>
         <hr/>
-        <button id="throw-d20-button" onClick={ () => throwD20(1)}>d20</button>
-        <button id="throw-d20-with-advantage-button" onClick={ () => throwD20(2)}>d20 с преимуществом</button>
-        <button id="throw-d20-with-disadvantage-button" onClick={ () => throwD20(2)}>d20 с помехой</button>
+        <button id="throw-d20-button" onClick={ () => throwD20(1, 0, "")}>d20</button>
+        <button id="throw-d20-with-advantage-button" onClick={ () => throwD20(2, 1, "с преимуществом")}>d20 с преимуществом</button>
+        <button id="throw-d20-with-disadvantage-button" onClick={ () => throwD20(2, -1, "с помехой")}>d20 с помехой</button>
       </div>
     </>
   )
 
-  function throwD20(count){
-
-    console.log("onCLick Called");
-
+  function throwD20(count, updatedSortingMode, sortingModeString){
     setDices([]);
+    setDiceValues([]);
+    setSortingModeString(sortingModeString);
+    sortingMode = updatedSortingMode;
 
     setTimeout(() => {
       let diceButtons = [];
@@ -64,9 +66,20 @@ function ThrowD20Panel() {
   }
 
   function setDiceValue(index, value){
-    //diceValues[index] = value; 
-    //setDiceValues(diceValues);
-    console.log(index + " " + value);
+    diceValues[index] = value;
+    calculateThrowResult();
+  }
+  
+  function calculateThrowResult(){
+    setSelectedDiceValue(selectCorrectD20DiceResult(diceValues, sortingMode));
+  }
+
+  function selectCorrectD20DiceResult(diceValues, sortingMode){
+    //sortingMode = convertSortingModToNumber(sortingMode);
+    //sort the array in decreasing order if sortingMod is more than 0 
+    //and in increasing order if less than 0
+    diceValues = diceValues.sort((a, b) => (a - b) * -sortingMode);
+    return diceValues[0];
   }
 }
 

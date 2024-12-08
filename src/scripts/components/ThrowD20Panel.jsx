@@ -67,6 +67,7 @@ function ThrowD20Panel() {
 
   function setDiceValue(index, value){
     diceValues[index] = value;
+    console.log(diceValues);
     calculateThrowResult();
   }
   
@@ -75,11 +76,12 @@ function ThrowD20Panel() {
   }
 
   function selectCorrectD20DiceResult(diceValues, sortingMode){
+    let arrayToSort = diceValues.slice(0);
     //sortingMode = convertSortingModToNumber(sortingMode);
     //sort the array in decreasing order if sortingMod is more than 0 
     //and in increasing order if less than 0
-    diceValues = diceValues.sort((a, b) => (a - b) * -sortingMode);
-    return diceValues[0];
+    arrayToSort = arrayToSort.sort((a, b) => (a - b) * -sortingMode);
+    return arrayToSort[0];
   }
 }
 

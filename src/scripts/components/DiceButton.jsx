@@ -1,30 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function DiceButton(props){
 
-    const [currentValue, setCurrentValue] = useState(getRandomInteger(1, props.maxValue));
-    const [styleClasses, setStyleClasses] = useState("d20-button falling-dice");
+    const [currentValue, setCurrentValue] = useState(0);
+    const [styleClasses, setStyleClasses] = useState("d20-button");
 
-    removeFallingAnimationOnDelay();
+    useEffect(() => {roll(props.maxValue)}, [])
 
     return(
-        <button className={styleClasses} onClick={ () => {(roll(props.maxValue))}}>{currentValue}</button>
+        <button className={styleClasses} onClick={() => {(roll(props.maxValue));}}>
+            {currentValue}
+        </button>
     );
 
     function roll(maxValue){
-        setCurrentValue(getRandomInteger(1, maxValue));
+        let result = getRandomInteger(1, maxValue);
+        setCurrentValue(result);
+        props.setDiceValueToArrayFunc(props.index, result);
 
-        addFallingAnimation();
-        removeFallingAnimationOnDelay();
-    }
-
-    function addFallingAnimation(){
         setStyleClasses("d20-button falling-dice");
-    }
-
-    function removeFallingAnimationOnDelay(){
         setTimeout(() => {
-            setStyleClasses("d20-button")
+            setStyleClasses("d20-button");
         }, 150);
     }
 }

@@ -4,6 +4,7 @@ import DiceButton from "./DiceButton"
 function ThrowD20Panel() {
 
   const [dices, setDices] = useState([]);
+  const [diceValues, setDiceValues] = useState([]);
 
   return (
     <>
@@ -42,16 +43,30 @@ function ThrowD20Panel() {
   )
 
   function throwD20(count){
-    setDices([])
+
+    console.log("onCLick Called");
+
+    setDices([]);
 
     setTimeout(() => {
       let diceButtons = [];
       for(let i = 0; i < count; i++){
-        diceButtons.push(<DiceButton key={i} maxValue="20"/>)
+        diceButtons.push(<DiceButton 
+          key={i} 
+          maxValue="20" 
+          index={i} 
+          setDiceValueToArrayFunc={setDiceValue}
+          />)
       }
   
       setDices(diceButtons);
     }, 0);
+  }
+
+  function setDiceValue(index, value){
+    //diceValues[index] = value; 
+    //setDiceValues(diceValues);
+    console.log(index + " " + value);
   }
 }
 

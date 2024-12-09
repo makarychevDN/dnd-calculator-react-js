@@ -5,11 +5,14 @@ function ThrowD20Panel(props) {
   const [dices, setDices] = useState([]);
   const [diceValues, setDiceValues] = useState([]);
   const [throwResultValue, setThrowResultValue] = useState(0);
+
   const [sortingModeString, setSortingModeString] = useState("");
   const [sortingMode, setSortingMode] = useState(0);
 
   const [character] = useState(props.character)
   const [lastUsedCharacteristic, setLastUsedCharacteristic] = useState(props.character.getlastUsedCharacteristic())
+
+  const [criticalHitLabelValue, setcriticalHitLabelValue] = useState("");
 
   useEffect(() => {
     displayThrowResult();
@@ -39,7 +42,10 @@ function ThrowD20Panel(props) {
             </div>
           </div>
           <div style={{width: "fit-content", textAlign: "center", marginRight: "40px", marginLeft: "auto", marginTop: "auto", marginBottom: "auto"}}>
-            <div><label style={{fontSize: "xx-large"}}>{throwResultValue}</label></div>
+            <div>
+              <label style={{fontSize: "xx-large"}}>{throwResultValue}</label>
+              <label style={{fontSize: "xx-large"}}>{criticalHitLabelValue}</label>
+            </div>
             <div><label id="d20-mode-label" style={{color: "gray"}}>{sortingModeString}</label></div>
           </div>
         </div>
@@ -85,6 +91,7 @@ function ThrowD20Panel(props) {
   }
   
   function displayThrowResult(){
+    setcriticalHitLabelValue("");
     let selectedDiceResult = selectCorrectD20DiceResult(diceValues, sortingMode);
 
     if(!selectedDiceResult){
@@ -95,6 +102,10 @@ function ThrowD20Panel(props) {
     if(selectedDiceResult == 1){
       setThrowResultValue(1);
       return;
+    }
+
+    if(selectedDiceResult == 20){
+      setcriticalHitLabelValue(" крит");
     }
 
     setThrowResultValue(

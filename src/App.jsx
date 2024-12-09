@@ -8,10 +8,20 @@ function App() {
 
   return (
     <>
-      <ThrowD20Panel 
-        character={currentCharacter}
-      />
-      <CalculateDamagePanel />
+      <header>      
+      </header>
+
+      <div className='page-center'>
+        <div>
+          <ThrowD20Panel character={currentCharacter} />
+        </div>
+        <div>
+          <CalculateDamagePanel />
+        </div>
+        <div>
+            
+        </div>
+      </div>
     </>
   )
 }

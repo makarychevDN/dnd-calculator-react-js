@@ -1,5 +1,5 @@
 class Character{
-    constructor(strength, dexterity, constitution, intelligence, wisdom, charisma, lastUsedCharacteristicIndex, 
+    constructor(strength, dexterity, constitution, intelligence, wisdom, charisma, lastUsedCharacteristic, 
         proficiencyBonus, maxHealth, currentHealth, money){
         this._strength = strength;
         this._dexterity = dexterity;
@@ -7,7 +7,7 @@ class Character{
         this._intelligence = intelligence;
         this._wisdom = wisdom;
         this._charisma = charisma;
-        this._lastUsedCharacteristicIndex = lastUsedCharacteristicIndex;
+        this._lastUsedCharacteristic = lastUsedCharacteristic;
 
         this._proficiencyBonus = proficiencyBonus;
 
@@ -25,24 +25,24 @@ class Character{
     getWisdomModificator(){ return this.getModificatorOfCharacteristic(this._wisdom)}
     getCharismaModificator(){ return this.getModificatorOfCharacteristic(this._charisma)}
 
-    getlastUsedCharacteristicIndex(){ return this._lastUsedCharacteristicIndex}
+    getlastUsedCharacteristic(){ return this._lastUsedCharacteristic}
 
     getCurrentHealth(){return this._currentHealth};
     getMaxHealth(){return this._maxHealth};
 
     getLastUsedCharacteristicModificator(){
-        switch (this._lastUsedCharacteristicIndex) {
-            case 0: return this.getStrengthModificator();
-            case 1: return this.getDexterityModificator();
-            case 2: return this.getConstitutionModificator();
-            case 3: return this.getIntelligenceModificator();
-            case 4: return this.getWisdomModificator();
-            case 5: return this.getCharismaModificator();
+        switch (this._lastUsedCharacteristic) {
+            case "strength": return this.getStrengthModificator();
+            case "dexterity": return this.getDexterityModificator();
+            case "constitution": return this.getConstitutionModificator();
+            case "intelligence": return this.getIntelligenceModificator();
+            case "wisdom": return this.getWisdomModificator();
+            case "charisma": return this.getCharismaModificator();
         }
     }
 
-    setLastUsedCharacteristic(indexOfCharacterstic){
-        this._lastUsedCharacteristicIndex = indexOfCharacterstic;
+    setLastUsedCharacteristic(lastUsedCharacteristic){
+        this._lastUsedCharacteristic = lastUsedCharacteristic;
         dispatchEvent(new CustomEvent("lastUsedCharacteristicIndexChanged", 
             {detail: {modificator : this.getLastUsedCharacteristicModificator() }}));
     }

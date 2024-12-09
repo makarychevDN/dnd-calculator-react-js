@@ -1,12 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import DiceButton from "./DiceButton"
 
-function ThrowD20Panel() {
+function ThrowD20Panel(props) {
   const [dices, setDices] = useState([]);
   const [diceValues, setDiceValues] = useState([]);
-  const [selectedDiceValue, setSelectedDiceValue] = useState(0);
+  const [throwResultValue, setThrowResultValue] = useState(0);
   const [sortingModeString, setSortingModeString] = useState("");
-  let sortingMode = 0;
+  const [sortingMode, setSortingMode] = useState(0);
+
+  const [character] = useState(props.character)
+  const [lastUsedCharacteristic, setLastUsedCharacteristic] = useState(props.character.getlastUsedCharacteristic())
+
+  useEffect(() => {
+    displayThrowResult();
+  }, [sortingMode, diceValues, lastUsedCharacteristic]);
 
   return (
     <>
@@ -17,22 +24,22 @@ function ThrowD20Panel() {
             <p></p>
             <div>
               <label style={{color: "gray"}}>модификатор </label>            
-              <select id="selected-modificator">
-                <option value="strength">силы 5</option>
-                <option value="dexterity">ловкости 5</option>
-                <option value="constitution">выносливости 5</option>
-                <option value="intelligence">интеллекта 5</option>
-                <option value="wisdom">мудрости 5</option>
-                <option value="charisma">харизмы 5</option>
+              <select value={lastUsedCharacteristic} onChange={e => updateLastUsedCharacteristic(e.target.value)}>
+                <option value="strength">силы {character.getStrengthModificator()}</option>
+                <option value="dexterity">ловкости {character.getDexterityModificator()}</option>
+                <option value="constitution">выносливости {character.getConstitutionModificator()}</option>
+                <option value="intelligence">интеллекта {character.getIntelligenceModificator()}</option>
+                <option value="wisdom">мудрости {character.getWisdomModificator()}</option>
+                <option value="charisma">харизмы {character.getCharismaModificator()}</option>
               </select>
             </div>
-            <div><label style={{color: "gray"}}>бонус мастерства 3</label></div>
+            <div><label style={{color: "gray"}}>бонус мастерства {character.getProficiencyBonus()}</label></div>
             <div id="d20-dices-parent" style={{color: "gray"}}>
               дайс {dices}
             </div>
           </div>
           <div style={{width: "fit-content", textAlign: "center", marginRight: "40px", marginLeft: "auto", marginTop: "auto", marginBottom: "auto"}}>
-            <div><label style={{fontSize: "xx-large"}}>{selectedDiceValue}</label></div>
+            <div><label style={{fontSize: "xx-large"}}>{throwResultValue}</label></div>
             <div><label id="d20-mode-label" style={{color: "gray"}}>{sortingModeString}</label></div>
           </div>
         </div>
@@ -44,11 +51,16 @@ function ThrowD20Panel() {
     </>
   )
 
+  function updateLastUsedCharacteristic(selectObject) {
+    props.character.setLastUsedCharacteristic(selectObject);
+    setLastUsedCharacteristic(selectObject);
+  }
+
   function throwD20(count, updatedSortingMode, sortingModeString){
     setDices([]);
-    setDiceValues([]);
+    setDiceValues(Array(count).fill(0));
     setSortingModeString(sortingModeString);
-    sortingMode = updatedSortingMode;
+    setSortingMode(updatedSortingMode);
 
     setTimeout(() => {
       let diceButtons = [];
@@ -58,21 +70,38 @@ function ThrowD20Panel() {
           maxValue="20" 
           index={i} 
           setDiceValueToArrayFunc={setDiceValue}
-          />)
-      }
-  
+        />)
+      }  
       setDices(diceButtons);
     }, 0);
   }
 
   function setDiceValue(index, value){
-    diceValues[index] = value;
-    console.log(diceValues);
-    calculateThrowResult();
+    setDiceValues(currentValues => {
+      const newValues = [...currentValues];
+      newValues[index] = value;
+      return newValues;
+    });
   }
   
-  function calculateThrowResult(){
-    setSelectedDiceValue(selectCorrectD20DiceResult(diceValues, sortingMode));
+  function displayThrowResult(){
+    let selectedDiceResult = selectCorrectD20DiceResult(diceValues, sortingMode);
+
+    if(!selectedDiceResult){
+      setThrowResultValue();
+      return;
+    }
+
+    if(selectedDiceResult == 1){
+      setThrowResultValue(1);
+      return;
+    }
+
+    setThrowResultValue(
+      selectCorrectD20DiceResult(diceValues, sortingMode)
+      + props.character.getProficiencyBonus()
+      + props.character.getLastUsedCharacteristicModificator()
+    );  
   }
 
   function selectCorrectD20DiceResult(diceValues, sortingMode){

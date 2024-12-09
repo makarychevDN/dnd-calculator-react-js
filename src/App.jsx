@@ -7,7 +7,9 @@ function App() {
 
   return (
     <>
-      <ThrowD20Panel/>
+      <ThrowD20Panel 
+        character={currentCharacter}
+      />
     </>
   )
 }

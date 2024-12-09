@@ -20,7 +20,7 @@ function ThrowD20Panel(props) {
 
   return (
     <>
-      <div className='generic-gruop-layout' style={{minWidth: "450px"}}>
+      <div className='generic-group-layout' style={{minWidth: "450px"}}>
         <div style={{display: "flex", minWidth: "max-content"}}>
           <div>
             <label style={{fontSize: "larger"}}><b>Попадание</b></label>

@@ -1,6 +1,7 @@
 import './App.css'
 import ThrowD20Panel from './scripts/components/throwD20Panel'
 import CalculateDamagePanel from './scripts/components/CalculateDamagePanel'
+import CharacterResourcesPanel from './scripts/components/CharacterResourcesPanel'
 import './styles/GenericGroupLayout.css'
 import './styles/DiceButton.css'
 
@@ -19,7 +20,7 @@ function App() {
           <CalculateDamagePanel />
         </div>
         <div>
-            
+          <CharacterResourcesPanel />
         </div>
       </div>
     </>

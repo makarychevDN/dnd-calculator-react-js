@@ -92,3 +92,30 @@ hr{
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.health-slider{
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #eee;
+  overflow: hidden;
+  border: solid 1px #ddd;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 5px;
+}
+
+.health-slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 0px;
+  transform: translate(7px);
+  box-shadow: -407px 0 0 400px #aa5050;
+  offset: 100px;
+}
+
+.generic-text-input{
+  border: solid 1px #ddd;
+  width: 30px;
+}

@@ -49,11 +49,11 @@ function ThrowD20Panel(props) {
             <div><label id="d20-mode-label" style={{color: "gray"}}>{sortingModeString}</label></div>
           </div>
         </div>
-        {/*<hr/>
-        <button id="throw-d20-button" onClick={ () => throwD20(1, 0, "")} style={{marginRight: "10px"}}>d20</button>
+        <hr/>
+        <button id="throw-d20-button" onClick={() => throwD20(1, 0, "")} style={{marginRight: "10px"}}>d20</button>
         <button id="throw-d20-with-advantage-button" onClick={ () => throwD20(2, 1, "с преимуществом")} style={{marginRight: "10px"}}>d20 с преимуществом</button>
         <button id="throw-d20-with-disadvantage-button" onClick={ () => throwD20(2, -1, "с помехой")} style={{marginRight: "10px"}}>d20 с помехой</button>
-        */}
+        
       </div>
     </>
   )

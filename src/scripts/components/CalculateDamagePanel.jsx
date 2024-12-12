@@ -1,6 +1,8 @@
+import { useState } from "react";
 import DiceButton from "./DiceButton"
 
 function CalculateDamagePanel(props) {
+    const [testValue, settestValue] = useState(props.testValue);
     
     return(
         <>
@@ -9,7 +11,8 @@ function CalculateDamagePanel(props) {
                 <p></p>
                 <div><label style={{color: "gray"}}>некротический 15 </label></div>
                 <div><label style={{color: "gray"}}>излучением 21 </label></div>
-                <div><label style={{color: "gray"}}>рубящий 3 </label></div>                
+                <div><label style={{color: "gray"}}>рубящий 3 </label></div>
+                <label>{props.testValue}</label>         
             </div>
         </>
     );

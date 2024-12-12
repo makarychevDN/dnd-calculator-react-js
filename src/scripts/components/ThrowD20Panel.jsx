@@ -20,13 +20,13 @@ function ThrowD20Panel(props) {
 
   return (
     <>
-      <div className='generic-group-layout' style={{minWidth: "450px"}}>
+      <div className='generic-group-layout' style={{minWidth: "250px"}}>
         <div style={{display: "flex", minWidth: "max-content"}}>
           <div>
             <label style={{fontSize: "larger"}}><b>Попадание</b></label>
             <p></p>
             <div>
-              <label style={{color: "gray"}}>модификатор </label>            
+              <label style={{color: "gray"}}>мод. </label>            
               <select value={lastUsedCharacteristic} onChange={e => updateLastUsedCharacteristic(e.target.value)}>
                 <option value="strength">силы {character.getStrengthModificator()}</option>
                 <option value="dexterity">ловкости {character.getDexterityModificator()}</option>
@@ -49,10 +49,11 @@ function ThrowD20Panel(props) {
             <div><label id="d20-mode-label" style={{color: "gray"}}>{sortingModeString}</label></div>
           </div>
         </div>
-        <hr/>
+        {/*<hr/>
         <button id="throw-d20-button" onClick={ () => throwD20(1, 0, "")} style={{marginRight: "10px"}}>d20</button>
         <button id="throw-d20-with-advantage-button" onClick={ () => throwD20(2, 1, "с преимуществом")} style={{marginRight: "10px"}}>d20 с преимуществом</button>
         <button id="throw-d20-with-disadvantage-button" onClick={ () => throwD20(2, -1, "с помехой")} style={{marginRight: "10px"}}>d20 с помехой</button>
+        */}
       </div>
     </>
   )

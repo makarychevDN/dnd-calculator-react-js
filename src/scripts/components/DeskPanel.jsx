@@ -61,14 +61,10 @@ function DeskPanel(props) {
         labelText="попадание"
         diceCount={diceCount}
         diceMaxValue={20}
-        onDiceValueSelected={displaySelectedValue}
+        onDiceValueSelected={(selectedValue) => setHitDiceValue(selectedValue)}
         sortingMode={sortingMode}
       />);
     }, 0);
-  }
-
-  function displaySelectedValue(selectedValue){
-    setHitDiceValue(selectedValue);
   }
 }
 

@@ -68,7 +68,6 @@ function DeskPanel(props) {
   }
 
   function displaySelectedValue(selectedValue){
-    //alert(selectedValue);
     setHitDiceValue(selectedValue);
   }
 }

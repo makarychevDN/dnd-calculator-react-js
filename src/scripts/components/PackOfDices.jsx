@@ -1,20 +1,27 @@
   import { useEffect, useState } from 'react';
   import DiceButton from './DiceButton'
 
-  function PackOfDices(props){
-    const [labelText] = useState(props.labelText);
-    const [diceCount] = useState(props.diceCount);
-    const [diceMaxValue] = useState(props.diceMaxValue);
+  function PackOfDices({labelText, diceCount, diceMaxValue, onSumCalculated, onDiceValueSelected, sortingMode}){
     const [diceButtons, setDiceButtons] = useState([]);
     const [diceValues, setDiceValues] = useState([]);
-    const [onSumCalculated] = useState(props.onSumCalculated);
 
     useEffect(() => spawnDices(diceCount, diceMaxValue), []);
-    useEffect(() => triggerCallbacks(), [diceValues]);
+    useEffect(() => {
+      if(onSumCalculated != null){
+        onSumCalculated(calculateSum(diceValues));
+      }
+
+      if(onDiceValueSelected){
+        onDiceValueSelected(selectDiceValueBySorting(diceValues, sortingMode));
+      }
+    }, [diceValues]);
     
     return(
       <>
-        <div><label>{labelText} </label>{diceButtons}</div>
+        <div>
+          <label>{labelText} </label>
+          {diceButtons}
+        </div>
       </>
     );
 
@@ -39,16 +46,6 @@
       });
     }
 
-    function triggerCallbacks(){
-      if(onSumCalculated != null){
-        onSumCalculated(calculateSum(diceValues));
-      }
-
-      if(props.onDiceValueSelected){
-        props.onDiceValueSelected(selectDiceValueBySorting(diceValues, 1));
-      }
-    }
-
     function calculateSum(diceValues){
       return diceValues.reduce(function(sum, current) {
         return sum + current;
@@ -56,13 +53,11 @@
     }
 
     function selectDiceValueBySorting(diceValues, sortingMode){
-      console.log(diceValues);
-      let arrayToSort = diceValues.slice(0);
+      if (!diceValues || diceValues.length === 0) return null;
       //sortingMode = convertSortingModToNumber(sortingMode);
       //sort the array in decreasing order if sortingMod is more than 0 
       //and in increasing order if less than 0
-      arrayToSort = arrayToSort.sort((a, b) => (a - b) * -sortingMode);
-      return arrayToSort[0];
+      return [...diceValues].sort((a, b) => (a - b) * -sortingMode)[0];
     }
   }
 

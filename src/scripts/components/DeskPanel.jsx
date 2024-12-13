@@ -12,15 +12,15 @@ function DeskPanel(props) {
         <div id='left half of table' className='generic-group-layout' style={{width: "400px"}}>
           <div>
             <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 
-              onClick={() => throwD20PackOfDices(1)}>
+              onClick={() => throwD20PackOfDices(1, 0)}>
               d20
             </button>
             <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 
-              onClick={() => throwD20PackOfDices(2)}>
+              onClick={() => throwD20PackOfDices(2, 1)}>
               d20
             </button>
             <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 
-              onClick={() => throwD20PackOfDices(2)}>
+              onClick={() => throwD20PackOfDices(2, -1)}>
               d20
             </button>
           </div>
@@ -49,7 +49,7 @@ function DeskPanel(props) {
     </>
   );
 
-  function throwD20PackOfDices(diceCount){
+  function throwD20PackOfDices(diceCount, sortingMode){
     setHitTargetPackOfDices();
 
     setTimeout(() => {
@@ -59,6 +59,7 @@ function DeskPanel(props) {
         diceCount={diceCount}
         diceMaxValue={20}
         onDiceValueSelected={displaySelectedValue}
+        sortingMode={sortingMode}
       />);
     }, 0);
   }

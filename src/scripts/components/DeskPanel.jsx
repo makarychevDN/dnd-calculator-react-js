@@ -1,10 +1,12 @@
-import ThrowD20Panel from './throwD20Panel'
+import HitValuePanel from './HitValuePanel'
 import CalculateDamagePanel from './CalculateDamagePanel'
 import { useState } from 'react';
 import PackOfDices from './PackOfDices';
 
 function DeskPanel(props) {
   const [hitTargetPackOfDices, setHitTargetPackOfDices] = useState();
+  const [hitDiceValue, setHitDiceValue] = useState(0);
+  const [sortingMode, setSortingMode] = useState(0);
 
   return(
     <>
@@ -34,7 +36,7 @@ function DeskPanel(props) {
 
         <div id='right half of table' style={{width: "400px"}}>
           <div>
-            <ThrowD20Panel character={currentCharacter} />
+            <HitValuePanel character={currentCharacter} diceValue={hitDiceValue} sortingMode={sortingMode}/>
           </div>
           <div>
             <CalculateDamagePanel/>
@@ -51,6 +53,7 @@ function DeskPanel(props) {
 
   function throwD20PackOfDices(diceCount, sortingMode){
     setHitTargetPackOfDices();
+    setSortingMode(sortingMode);
 
     setTimeout(() => {
       setHitTargetPackOfDices(<PackOfDices 
@@ -65,7 +68,8 @@ function DeskPanel(props) {
   }
 
   function displaySelectedValue(selectedValue){
-    alert(selectedValue);
+    //alert(selectedValue);
+    setHitDiceValue(selectedValue);
   }
 }
 

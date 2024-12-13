@@ -1,5 +1,5 @@
 import './App.css'
-import ThrowD20Panel from './scripts/components/throwD20Panel'
+import HitValuePanel from './scripts/components/HitValuePanel'
 import CalculateDamagePanel from './scripts/components/CalculateDamagePanel'
 import CharacterResourcesPanel from './scripts/components/CharacterResourcesPanel'
 import './styles/GenericGroupLayout.css'

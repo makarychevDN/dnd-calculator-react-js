@@ -11,7 +11,7 @@ function DeskPanel(props) {
   return(
     <>
       <div id="table panel" className='desk' style={{display: "flex"}}>
-        <div id='left half of table' className='generic-group-layout' style={{width: "400px"}}>
+        <div id='left half of table' className='generic-transparent-group-layout' style={{width: "400px"}}>
           <div>
             <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 
               onClick={() => throwD20PackOfDices(1, 0)}>
@@ -41,7 +41,7 @@ function DeskPanel(props) {
           <div>
             <CalculateDamagePanel/>
           </div>
-          <div className='generic-group-layout' style={{height: "200px"}}>
+          <div className='generic-transparent-group-layout' style={{height: "200px"}}>
           <label style={{fontSize: "larger"}}><b>Стол</b></label>
           <p></p>
           <label>{hitTargetPackOfDices}</label>

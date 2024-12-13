@@ -1,7 +1,11 @@
-.generic-group-layout{
-    background-color: rgba(255, 255, 255, 0.9);
+.generic-group-layout, .generic-transparent-group-layout{
+    background-color: #eee;    
     border-radius: 5px;
     margin: 20px;
     padding: 20px;
     text-align: left;
+}
+
+.generic-transparent-group-layout{
+    background-color: rgba(255, 255, 255, 0.9);    
 }

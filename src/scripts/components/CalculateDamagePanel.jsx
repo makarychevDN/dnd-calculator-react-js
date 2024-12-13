@@ -5,7 +5,7 @@ function CalculateDamagePanel(props) {
     
     return(
         <>
-            <div className='generic-group-layout'>
+            <div className='generic-transparent-group-layout'>
                 <label style={{fontSize: "larger"}}><b>Урон</b></label>
                 <p></p>
                 <div><label style={{color: "gray"}}>некротический 15 </label></div>

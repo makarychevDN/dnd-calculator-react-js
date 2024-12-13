@@ -15,7 +15,7 @@ function HitValuePanel(props) {
 
   return (
     <>
-      <div className='generic-group-layout' style={{minWidth: "250px"}}>
+      <div className='generic-transparent-group-layout' style={{minWidth: "250px"}}>
         <div style={{display: "flex", minWidth: "max-content"}}>
           <div>
             <label style={{fontSize: "larger"}}><b>Попадание</b></label>

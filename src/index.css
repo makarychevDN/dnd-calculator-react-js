@@ -45,13 +45,13 @@ button {
   font-weight: bold;
   font-family: CustomFont;
 
-  background-color: #f8f8f8;
+  background-color: rgba(0, 0, 0, 0);
   color: gray;
   cursor: pointer;
   transition: background-color 0.25s;
 }
 button:hover {
-  background-color: #eee;
+  background-color: rgba(255, 0, 0, 0.25);
 }
 
 select{
@@ -71,13 +71,13 @@ select{
   font-weight: bold;
   font-family: CustomFont;
 
-  background-color: #f8f8f8;
+  background-color: rgba(0, 0, 0, 0);
   color: gray;
   cursor: pointer;
   transition: background-color 0.25s;
 }
 select:hover {
-  background-color: #eee;
+  background-color: rgba(255, 0, 0, 0.25);
 }
 select:focus{
   outline: none;

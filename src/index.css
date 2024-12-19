@@ -115,11 +115,10 @@ hr{
 
 .generic-text-input{
   font-family: CustomFont;
-  font-size: medium;
   border: solid 1px #ddd;
-  width: 25px;
+  width: 30px;
   height: 14px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: white;
   border-radius: 5px;
   border-color: #ddd;
 }

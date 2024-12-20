@@ -1,6 +1,6 @@
 class Character{
     constructor(strength, dexterity, constitution, intelligence, wisdom, charisma, lastUsedCharacteristic, 
-        proficiencyBonus, maxHealth, currentHealth, money){
+        proficiencyBonus, health, money){
         this._strength = strength;
         this._dexterity = dexterity;
         this._constitution = constitution;
@@ -11,9 +11,7 @@ class Character{
 
         this._proficiencyBonus = proficiencyBonus;
 
-        this._maxHealth = maxHealth;
-        this._currentHealth = currentHealth;
-        if(this._currentHealth > this._maxHealth) this._currentHealth = maxHealth;
+        this._health = health;
 
         this._money = money;
     }
@@ -81,5 +79,28 @@ class Character{
 
     getProficiencyBonus(){
         return this._proficiencyBonus;
+    }
+}
+
+class CharactersResource{
+    constructor(maxValue, currentValue){
+        this._maxValue = maxValue;
+        this._currentValue = currentValue;
+    }
+
+    setMaxValue(value){ this._maxValue = value; }    
+    setCurrentValue(value){ this._currentValue = value; }
+    resetCurrentValue(){ this.setCurrentValue(this._maxValue); }
+
+    addValue(value){
+        this._currentValue += value;
+
+        if(this._currentValue > this._maxValue){
+            this.currentValue = this._maxValue;
+        }
+    }
+    
+    substractValue(value){
+        this._currentValue -= value;
     }
 }

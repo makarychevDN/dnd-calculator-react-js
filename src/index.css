@@ -122,11 +122,3 @@ hr{
   border-radius: 5px;
   border-color: #ddd;
 }
-
-.generic-text-input:hover{
-  background-color: rgba(255, 0, 0, 0.25);
-}
-
-.generic-text-input:focus{
-  background-color: white;
-}

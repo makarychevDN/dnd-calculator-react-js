@@ -10,7 +10,8 @@ function loadCharacter(){
 function parseJsonToCharacter(json){
     let characterAsObject = JSON.parse(json);
     fieldsOfObject = Object.values(characterAsObject);
-    let characterAsInstanceOfClass = new Character(...fieldsOfObject);    
+    let characterAsInstanceOfClass = new Character(...fieldsOfObject);
+    Object.setPrototypeOf(characterAsInstanceOfClass.getHealth(), CharactersResource.prototype);
     return characterAsInstanceOfClass;
 }
 
@@ -21,7 +22,7 @@ function loadCharacterJson(){
             16, 11, 16, 8, 12, 9, 
             "intelligence", 
             3, 
-            new CharactersResource(16, 10),
+            new CharactersResource("здоровье", 16, 10),
             {
                 "золото" : 9,
                 "серебро" : 23,

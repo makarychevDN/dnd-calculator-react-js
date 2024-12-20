@@ -25,8 +25,7 @@ class Character{
 
     getlastUsedCharacteristic(){ return this._lastUsedCharacteristic}
 
-    getCurrentHealth(){return this._currentHealth};
-    getMaxHealth(){return this._maxHealth};
+    getHealth(){return this._health};
 
     getLastUsedCharacteristicModificator(){
         switch (this._lastUsedCharacteristic) {
@@ -83,14 +82,19 @@ class Character{
 }
 
 class CharactersResource{
-    constructor(maxValue, currentValue){
+    constructor(name, maxValue, currentValue){
+        this._name = name;
         this._maxValue = maxValue;
         this._currentValue = currentValue;
     }
 
+    setName(value){ this._name = value; }
     setMaxValue(value){ this._maxValue = value; }    
     setCurrentValue(value){ this._currentValue = value; }
     resetCurrentValue(){ this.setCurrentValue(this._maxValue); }
+    getName() {return this._name};
+    getMaxValue() {return this._maxValue};
+    getCurrentValue() {return this._currentValue};
 
     addValue(value){
         this._currentValue += value;

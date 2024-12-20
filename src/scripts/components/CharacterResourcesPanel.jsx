@@ -1,13 +1,12 @@
 import ResouceBar from "./ResouceBar"
 
-function CharacterResourcesPanel(props) {
-    
+function CharacterResourcesPanel({currentCharacter}) {    
   return(
     <>
       <div style={{display: "flex", flexDirection: "column", height: "100%"}}>
         <div style={{overflowY: "auto", marginTop: "20px", marginBottom: "20px"}}>        
           <div style={{marginTop: "-20px"}}></div>
-          <ResouceBar style={{marginTop: "-20px"}}/>      
+          <ResouceBar key={124} resource={currentCharacter.getHealth()} style={{marginTop: "-20px"}}/>      
 
           <div className="generic-group-layout" style={{marginTop: "0px"}}>
             <div>деньги</div>
@@ -18,12 +17,12 @@ function CharacterResourcesPanel(props) {
           </div>
 
           <div id="resource points" style={{flexGrow: 1}}>
-            <ResouceBar />
+            {/*<ResouceBar />
             <ResouceBar />   
             <ResouceBar />   
             <ResouceBar />   
             <ResouceBar />   
-            <ResouceBar />   
+            <ResouceBar />   */}
             <div style={{marginTop: "-20px"}}></div>
           </div>
           

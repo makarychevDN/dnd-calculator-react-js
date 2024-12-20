@@ -18,7 +18,7 @@ function App() {
       <div className='page-center' style={{display: "flex", maxHeight: "804px"}}>
         <DeskPanel />
         <div>
-          <CharacterResourcesPanel />
+          <CharacterResourcesPanel currentCharacter={currentCharacter}/>
         </div>
       </div>
     </>

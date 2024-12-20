@@ -12,22 +12,30 @@ function ResouceBar(props) {
         <label style={{fontSize: "medium"}}>{resourceName} {currentValue}</label>
         <div style={{display: "flex", minWidth: "max-content"}}>
           <div id="group-2" style={{flexGrow: 1}}>
-            <input type="range" onInput={updateCurrentValue} max={maxValue} value={currentValue} className="health-slider" id="health-bar" />
+            <input type="range" onInput={handleSliderInput} max={maxValue} value={currentValue} className="health-slider" id="health-bar" />
           </div>
-          <PlusMinusValuePanel />
+          <PlusMinusValuePanel onAdd={(value) => addCurrentValue(value)} onSubstract={(value) => substractCurrentValue(value)}/>
         </div>
       </div>
     </>
   );
 
-  function updateCurrentValue(e) {
+  function handleSliderInput(e) {
     props.resource.setCurrentValue(e.target.value);
     setCurrentValue(e.target.value);
   }
 
-  function addCurrentValue(){
-    
+  function addCurrentValue(value){
+    let updatedValue = Number(currentValue) + Number(value);
+    if(updatedValue > maxValue){
+      updatedValue = maxValue;
+    }
+
+    props.resource.setCurrentValue(updatedValue);
+    setCurrentValue(updatedValue);
   }
+
+  function substractCurrentValue(value){ addCurrentValue(-value) }
 }
 
 export default ResouceBar

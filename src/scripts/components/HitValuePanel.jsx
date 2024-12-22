@@ -15,8 +15,8 @@ function HitValuePanel(props) {
 
   return (
     <>
-      <div className='generic-transparent-group-layout' style={{minWidth: "250px"}}>
-        <div style={{display: "flex", minWidth: "max-content"}}>
+      <div className='generic-transparent-group-layout' style={{minWidth: "350px", flexGrow: 1}}>
+        <div style={{display: "flex"}}>
           <div>
             <label style={{fontSize: "larger"}}><b>Попадание</b></label>
             <p></p>
@@ -38,7 +38,7 @@ function HitValuePanel(props) {
           </div>
           <div style={{width: "fit-content", textAlign: "center", marginRight: "40px", marginLeft: "auto", marginTop: "auto", marginBottom: "auto"}}>
             <div>
-              <label style={{fontSize: "xx-large"}}>{throwResultValue}</label>
+              <label style={{fontSize: "xx-large"}}><b>{throwResultValue}</b></label>
               <label style={{fontSize: "xx-large"}}>{criticalHitLabelValue}</label>
             </div>
             <div><label id="d20-mode-label" style={{color: "gray"}}>{sortingModeString}</label></div>

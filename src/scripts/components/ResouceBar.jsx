@@ -12,7 +12,7 @@ function ResouceBar(props) {
         <label style={{fontSize: "medium"}}>{resourceName} {currentValue}</label>
         <div style={{display: "flex", minWidth: "max-content"}}>
           <div id="group-2" style={{flexGrow: 1}}>
-            <input type="range" onInput={handleSliderInput} max={maxValue} value={currentValue} className="health-slider" id="health-bar" />
+            <input type="range" onInput={handleSliderInput} max={maxValue} value={currentValue} className="mana-slider generic-resource-slider" id="health-bar" />
           </div>
           <PlusMinusValuePanel onAdd={(value) => addCurrentValue(value)} onSubstract={(value) => substractCurrentValue(value)}/>
         </div>

@@ -15,11 +15,11 @@ function App() {
       <header>      
       </header>
 
-      <div className='page-center' style={{display: "flex", maxHeight: "804px"}}>
+      <div className='page-center'>
         <DeskPanel />
-        <div>
+        {/*<div>
           <CharacterResourcesPanel currentCharacter={currentCharacter}/>
-        </div>
+        </div>*/}
       </div>
     </>
   )

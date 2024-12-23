@@ -1,6 +1,7 @@
 .generic-group-layout, .generic-transparent-group-layout{
     background-color: #eee;    
     border-radius: 5px;
+    border-bottom: solid 3px #ddd;
     margin: 7px;
     padding: 20px;
     text-align: left;

@@ -45,7 +45,7 @@ function DeskPanel(props) {
                 d20
               </button>
               <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 
-                onClick={() => throwD20PackOfDices(32, 1)}>
+                onClick={() => throwD20PackOfDices(2, 1)}>
                 d20
               </button>
               <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 

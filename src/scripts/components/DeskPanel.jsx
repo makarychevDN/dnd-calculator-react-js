@@ -32,20 +32,20 @@ function DeskPanel(props) {
             <CalculateDamagePanel/>
           </div>
         </div>
-        <div id='the second row' className='generic-transparent-group-layout' style={{height: "100px"}}>
+        <div id='the second row' className='generic-group-layout' style={{height: "100px", marginBottom: "20px"}}>
             <label style={{fontSize: "larger"}}><b>Стол</b></label>
             <p></p>
             <label>{hitTargetPackOfDices}</label>
         </div>
         <div id="table panel" style={{display: "flex"}}>
-          <div id='left half of table' className='generic-transparent-group-layout' style={{width: "100%"}}>
+          <div style={{width: "100%"}}>
             <div>
               <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 
                 onClick={() => throwD20PackOfDices(1, 0)}>
                 d20
               </button>
               <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 
-                onClick={() => throwD20PackOfDices(2, 1)}>
+                onClick={() => throwD20PackOfDices(32, 1)}>
                 d20
               </button>
               <button style={{width: "80px", height: "80px", marginRight: "10px", marginBottom: "10px"}} 

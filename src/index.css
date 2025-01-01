@@ -12,7 +12,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #eee;
+  background-color: #ddd;
 }
   
 body {
@@ -42,9 +42,9 @@ header {
   max-width: 894px;
   padding: 0;
   min-height: 100%;
-  background-color: lightblue;
-  padding-left: 10px;
-  padding-right: 10px;
+  background-color: #efefef;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 button {
@@ -57,7 +57,7 @@ button {
 
   font-family: CustomFont;
 
-  background-color: rgba(0, 0, 0, 0); 
+  background-color: white; 
   cursor: pointer;
   transition: background-color 0.25s;
 }

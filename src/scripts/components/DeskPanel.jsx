@@ -54,7 +54,7 @@ function DeskPanel(props) {
               </button>
             </div>
             <p></p>
-            <div><button>ледянящее прикосновение</button></div>
+            <div><button>Ужасное увядание Аби-Далзима </button></div>
             <p></p>
             <div><button>ледянящее прикосновение</button></div>
             <p></p>

@@ -42,12 +42,9 @@ button {
   padding-top: 5px;
   padding-bottom: 5px;
 
-  font-size: smaller;
-  font-weight: bold;
   font-family: CustomFont;
 
-  background-color: rgba(0, 0, 0, 0);
-  color: gray;
+  background-color: rgba(0, 0, 0, 0); 
   cursor: pointer;
   transition: background-color 0.25s;
 }

@@ -61,7 +61,7 @@ function DeskPanel(props) {
             <p></p>
             <div><button>ледянящее прикосновение</button></div>
             <p></p>
-            <AbilityButton />
+            <AbilityButton ability={currentCharacter.getAbilities()[0]}/>
           </div>
         </div>
       </div>

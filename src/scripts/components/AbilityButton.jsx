@@ -1,8 +1,8 @@
-function AbilityButton() {    
+function AbilityButton({ability}) {
   return(
   <>
-    <div style={{width: "fit-content", border: "solid"}} onClick={() => alert("ability button is pressed")}>
-      ледянящее касание
+    <div style={{width: "fit-content", border: "solid"}} onClick={() => alert(`${ability.getName()} is pressed`)}>
+      {ability.getName()}
       <button onClick={(e) => {e.stopPropagation(); alert("choose option")}}>
         v
       </button>

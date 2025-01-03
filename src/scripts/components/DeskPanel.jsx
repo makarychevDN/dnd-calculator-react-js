@@ -2,6 +2,7 @@ import HitValuePanel from './HitValuePanel'
 import CalculateDamagePanel from './CalculateDamagePanel'
 import { useEffect, useState } from 'react';
 import PackOfDices from './PackOfDices';
+import AbilityButton from './AbilityButton';
 
 function DeskPanel(props) {
   const [hitTargetPackOfDices, setHitTargetPackOfDices] = useState();
@@ -59,6 +60,8 @@ function DeskPanel(props) {
             <div><button>ледянящее прикосновение</button></div>
             <p></p>
             <div><button>ледянящее прикосновение</button></div>
+            <p></p>
+            <AbilityButton />
           </div>
         </div>
       </div>

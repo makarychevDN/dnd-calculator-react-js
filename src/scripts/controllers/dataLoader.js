@@ -12,6 +12,9 @@ function parseJsonToCharacter(json){
     fieldsOfObject = Object.values(characterAsObject);
     let characterAsInstanceOfClass = new Character(...fieldsOfObject);
     Object.setPrototypeOf(characterAsInstanceOfClass.getHealth(), CharactersResource.prototype);
+    characterAsInstanceOfClass.getAbilities().forEach(ability => {
+        Object.setPrototypeOf(ability, Ability.prototype);
+    });
     return characterAsInstanceOfClass;
 }
 
@@ -27,6 +30,11 @@ function loadCharacterJson(){
                 "золото" : 9,
                 "серебро" : 23,
                 "медь" : 14,
-            }
+            },
+            new Array(
+                new Ability("удар топором", null, null),
+                new Ability("вжух", null, null),
+                new Ability("тычок вилкой", null, null),
+            )
     )); 
 }

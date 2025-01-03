@@ -1,6 +1,6 @@
 class Character{
     constructor(strength, dexterity, constitution, intelligence, wisdom, charisma, lastUsedCharacteristic, 
-        proficiencyBonus, health, money){
+        proficiencyBonus, health, money, abilities){
         this._strength = strength;
         this._dexterity = dexterity;
         this._constitution = constitution;
@@ -14,6 +14,8 @@ class Character{
         this._health = health;
 
         this._money = money;
+
+        this._abilities = abilities;
     }
 
     getStrengthModificator(){ return this.getModificatorOfCharacteristic(this._strength)}
@@ -44,7 +46,7 @@ class Character{
             {detail: {modificator : this.getLastUsedCharacteristicModificator() }}));
     }
 
-    setMaxHealth(value){
+    /*setMaxHealth(value){
         this._maxHealth = value;
         dispatchEvent(new CustomEvent("healthUpdated", 
             {detail: {character : this }}));
@@ -68,7 +70,7 @@ class Character{
 
     decreaseCurrentHealth(value){
         this.increaseCurrentHealth(-value);
-    }
+    }*/
     
     getProficiencyBonus(){ return this._proficiencyBonus}
 
@@ -78,6 +80,10 @@ class Character{
 
     getProficiencyBonus(){
         return this._proficiencyBonus;
+    }
+
+    getAbilities(){
+        return this._abilities;
     }
 }
 

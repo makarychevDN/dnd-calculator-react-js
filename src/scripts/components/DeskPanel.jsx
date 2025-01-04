@@ -69,7 +69,7 @@ function DeskPanel(props) {
 
     setTimeout(() => {
       setHitTargetPackOfDices(<PackOfDices 
-        key="sex" 
+        key="hit target pack of dices" 
         labelText="попадание"
         diceCount={diceCount}
         diceMaxValue={20}

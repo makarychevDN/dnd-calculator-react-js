@@ -17,7 +17,7 @@ function App() {
 
       <div className='page-center'>
         <div style={{paddingTop: "70px"}}>
-          <DeskPanel />
+          <DeskPanel character={currentCharacter}/>
         </div>
         {/*<div>
           <CharacterResourcesPanel currentCharacter={currentCharacter}/>

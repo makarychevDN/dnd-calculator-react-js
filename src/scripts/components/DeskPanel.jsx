@@ -27,7 +27,7 @@ function DeskPanel(props) {
       <div style={{display: "flex", flexWrap: "wrap", flexDirection: "column", width: "100%"}}>
         <div style={{display: "flex", flexDirection: isNarrow ? "column" : "row", width: "100%"}}>
           <div style={{flex: 1}}>
-            <HitValuePanel character={currentCharacter} diceValue={hitDiceValue} sortingMode={sortingMode}/> 
+            <HitValuePanel character={props.character} diceValue={hitDiceValue} sortingMode={sortingMode}/> 
           </div>
           <div style={{flex: 1}}>
             <CalculateDamagePanel/>
@@ -55,7 +55,7 @@ function DeskPanel(props) {
               </button>
             </div>
 
-            <AbilityButtons abilities={currentCharacter.getAbilities()}/>
+            <AbilityButtons abilities={props.character.getAbilities()}/>
           </div>
         </div>
       </div>

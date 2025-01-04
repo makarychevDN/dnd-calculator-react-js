@@ -2,7 +2,6 @@ import HitValuePanel from './HitValuePanel'
 import CalculateDamagePanel from './CalculateDamagePanel'
 import { useEffect, useState } from 'react';
 import PackOfDices from './PackOfDices';
-import AbilityButton from './AbilityButton';
 import AbilityButtons from './AbilityButtons';
 
 function DeskPanel(props) {

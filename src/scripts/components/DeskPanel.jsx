@@ -93,10 +93,11 @@ function DeskPanel(props) {
   function throwDamagePackOfDices(abilityOption){
     let newDamagePackOfDices = 
     <PackOfDices 
+      key= {`${abilityOption.getName()} ${Date.now()} pack of dices`}
       labelText={abilityOption.getName()} 
       diceCount={abilityOption.getDicesQuantity()} 
       diceMaxValue={abilityOption.getDicesMaxValue()}
-      key= {`${abilityOption.getName()} ${Date.now()} pack of dices`}
+      additionalValue={abilityOption.getAdditionalValue()}
     />;
 
     setDamagePacksOfDices(currentPack => {

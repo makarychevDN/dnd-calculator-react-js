@@ -1,7 +1,7 @@
   import { useEffect, useState } from 'react';
   import DiceButton from './DiceButton'
 
-  function PackOfDices({labelText, diceCount, diceMaxValue, onSumCalculated, onDiceValueSelected, sortingMode}){
+  function PackOfDices({labelText, diceCount, diceMaxValue, onSumCalculated, onDiceValueSelected, sortingMode, additionalValue}){
     const [diceButtons, setDiceButtons] = useState([]);
     const [diceValues, setDiceValues] = useState([]);
 
@@ -21,9 +21,14 @@
         <div>
           <label>{labelText} </label>
           {diceButtons}
+          <label>{convertAdditionalValueToString(additionalValue)}</label>
         </div>
       </>
     );
+
+    function convertAdditionalValueToString(additionalValue){
+      return additionalValue ? `+${additionalValue}` : ""; 
+    }
 
     function spawnDices(diceCount, diceMaxValue){
       let newDiceButtons = [];

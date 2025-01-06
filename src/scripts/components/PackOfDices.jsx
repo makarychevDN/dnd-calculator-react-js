@@ -51,10 +51,9 @@
       });
     }
 
-    function calculateSum(diceValues){
-      return diceValues.reduce(function(sum, current) {
-        return sum + current;
-      }, 0);
+    function calculateSum(diceValues, additionalValue){
+      return diceValues.reduce((sum, current) => sum + current, 0) 
+      + (additionalValue || 0);
     }
 
     function selectDiceValueBySorting(diceValues, sortingMode){

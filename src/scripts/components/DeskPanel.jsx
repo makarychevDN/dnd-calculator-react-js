@@ -96,6 +96,7 @@ function DeskPanel(props) {
       labelText={abilityOption.getName()} 
       diceCount={abilityOption.getDicesQuantity()} 
       diceMaxValue={abilityOption.getDicesMaxValue()}
+      key= {`${abilityOption.getName()} pack of dices`}
     />;
 
     setDamagePacksOfDices(currentPack => {

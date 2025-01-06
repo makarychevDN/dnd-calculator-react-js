@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AbilityButton from "./AbilityButton";
 
-function AbilityButtons({abilities}) {
+function AbilityButtons({abilities, onAbilityButtonClick}) {
 
   const [abilityButtons, setAbilityButtons] = useState([]);
 
@@ -20,6 +20,7 @@ function AbilityButtons({abilities}) {
       newAbilityButtons.push(<AbilityButton 
         key={`${ability.getName()} ability button`} 
         ability={ability}
+        onAbilityButtonClick={onAbilityButtonClick}
       />)      
     });
     

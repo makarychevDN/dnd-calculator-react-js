@@ -14,6 +14,10 @@ function parseJsonToCharacter(json){
     Object.setPrototypeOf(characterAsInstanceOfClass.getHealth(), CharactersResource.prototype);
     characterAsInstanceOfClass.getAbilities().forEach(ability => {
         Object.setPrototypeOf(ability, Ability.prototype);
+        /*ability.getAbilityOptions().forEach(abilityOption => {
+            Object.setPrototypeOf(abilityOption, AbilityOption.prototype);     
+        });*/
+        Object.setPrototypeOf(ability.getCurrentAbilityOption(), AbilityOption.prototype);
     });
     return characterAsInstanceOfClass;
 }
@@ -32,9 +36,17 @@ function loadCharacterJson(){
                 "медь" : 14,
             },
             new Array(
-                new Ability("удар топором", null, null),
-                new Ability("вжух", null, null),
-                new Ability("тычок вилкой", null, null),
+                new Ability("удар топором",
+                     null, 
+                     new AbilityOption("удар топором", "", 1, 6, 1)),
+
+                new Ability("вжух", 
+                    null, 
+                    new AbilityOption("вжух", "", 3, 10, 0)),
+
+                new Ability("тычок вилкой", 
+                    null, 
+                    new AbilityOption("тычок вилкой", "", 1, 4, 0)),
             )
     )); 
 }

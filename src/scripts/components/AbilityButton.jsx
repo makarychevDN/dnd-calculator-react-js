@@ -1,7 +1,11 @@
-function AbilityButton({ability}) {
+function AbilityButton({ability, onAbilityButtonClick}) {
   return(
   <>
-    <div style={{width: "fit-content", border: "solid"}} onClick={() => alert(`${ability.getName()} is pressed`)}>
+    <div style={{width: "fit-content", border: "solid"}} 
+      onClick={() => onAbilityButtonClick(
+        ability.getCurrentAbilityOption())
+      }
+    >
       {ability.getName()}
       <button onClick={(e) => {e.stopPropagation(); alert("choose option")}}>
         v

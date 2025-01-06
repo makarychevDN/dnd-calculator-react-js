@@ -3,9 +3,11 @@ import CalculateDamagePanel from './CalculateDamagePanel'
 import { useEffect, useState } from 'react';
 import PackOfDices from './PackOfDices';
 import AbilityButtons from './AbilityButtons';
+import AbilityButton from './AbilityButton';
 
 function DeskPanel(props) {
   const [hitTargetPackOfDices, setHitTargetPackOfDices] = useState();
+  const [damagePacksOfDices, setDamagePacksOfDices] = useState([]);
   const [hitDiceValue, setHitDiceValue] = useState(0);
   const [sortingMode, setSortingMode] = useState(0);
 
@@ -36,7 +38,8 @@ function DeskPanel(props) {
         <div id='the second row' className='generic-group-layout' style={{height: "100px", marginBottom: "20px"}}>
             <label style={{fontSize: "larger"}}><b>Стол</b></label>
             <p></p>
-            <label>{hitTargetPackOfDices}</label>
+            {hitTargetPackOfDices}
+            {damagePacksOfDices}
         </div>
         <div id="table panel" style={{display: "flex"}}>
           <div style={{width: "100%"}}>
@@ -54,8 +57,11 @@ function DeskPanel(props) {
                 d20
               </button>
             </div>
-
-            <AbilityButtons abilities={props.character.getAbilities()}/>
+            
+            <AbilityButtons 
+              abilities={props.character.getAbilities()} 
+              onAbilityButtonClick={(abilityOption) => throwDamagePackOfDices(abilityOption)}
+            />
           </div>
         </div>
       </div>
@@ -63,6 +69,7 @@ function DeskPanel(props) {
   );
 
   function throwD20PackOfDices(diceCount, sortingMode){
+    resetAbilityPacksOfDices();
     setHitTargetPackOfDices();
     setSortingMode(sortingMode);
 
@@ -76,6 +83,26 @@ function DeskPanel(props) {
         sortingMode={sortingMode}
       />);
     }, 0);
+
+  }
+
+  function resetAbilityPacksOfDices(){
+    setDamagePacksOfDices([]);
+  }
+
+  function throwDamagePackOfDices(abilityOption){
+    let newDamagePackOfDices = 
+    <PackOfDices 
+      labelText={abilityOption.getName()} 
+      diceCount={abilityOption.getDicesQuantity()} 
+      diceMaxValue={abilityOption.getDicesMaxValue()}
+    />;
+
+    setDamagePacksOfDices(currentPack => {
+      const newValues = [...currentPack];
+      newValues.push(newDamagePackOfDices);
+      return newValues;
+    });
   }
 }
 

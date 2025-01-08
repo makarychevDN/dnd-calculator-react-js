@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import DamageValueAndTypeRow from "./DamageValueAndTypeRow";
 
 function CalculateDamagePanel(props) {
   const [damageInstances, setDamageInstances] = useState([]);
   const [damageSum, setDamageSum] = useState([]);
+  const [damageValuesByTypes, setDamageValuesByTypes] = useState([]);
+  const [damageValueAndTypeRows, setDamageValueAndTypeRows] = useState([]);
 
   useEffect(() => {
     let damageInstances = [
@@ -14,13 +17,28 @@ function CalculateDamagePanel(props) {
     setDamageInstances(damageInstances);
   }, [])
 
+  useEffect(() => {
+    calculateDamage(damageInstances);
+  }, [damageInstances])
+
+  useEffect(() => {
+    let rows = [];
+    let index = 0;
+
+    damageValuesByTypes.forEach((value, key) => {
+      rows.push(<DamageValueAndTypeRow valueAndDamageType = {[key, value]} key={`damage row ${index}`} />);
+      index++;
+    });
+
+    setDamageValueAndTypeRows(rows);
+  }, [damageValuesByTypes])
+
   return(
     <>
       <div style={{minWidth: "230px", flexGrow: 1, height: "120px"}} className='generic-group-layout' onClick={() => calculateDamage(damageInstances)}>
         <label style={{fontSize: "larger"}}><b>Урон { damageSum }</b></label>
         <p></p>
-        <div><label style={{color: "gray"}}>некротический 15 </label></div>
-        <div><label style={{color: "gray"}}>излучением 21 </label></div>       
+        {damageValueAndTypeRows}
       </div>
     </>
   );
@@ -44,6 +62,7 @@ function CalculateDamagePanel(props) {
     });
 
     setDamageSum(damageSum);
+    setDamageValuesByTypes(damageOfDifferentTypes);
   }
 }
 

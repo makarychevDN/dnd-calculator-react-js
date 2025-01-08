@@ -8,7 +8,7 @@
     useEffect(() => spawnDices(diceCount, diceMaxValue), []);
     useEffect(() => {
       if(onSumCalculated != null){
-        onSumCalculated(calculateSum(diceValues, additionalValue), damageType);
+        onSumCalculated(damageType, calculateSum(diceValues, additionalValue));
       }
 
       if(onDiceValueSelected){

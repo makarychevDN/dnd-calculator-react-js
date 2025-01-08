@@ -1,21 +1,10 @@
 import { useEffect, useState } from "react";
 import DamageValueAndTypeRow from "./DamageValueAndTypeRow";
 
-function CalculateDamagePanel(props) {
-  const [damageInstances, setDamageInstances] = useState([]);
+function CalculateDamagePanel({damageInstances}) {
   const [damageSum, setDamageSum] = useState([]);
   const [damageValuesByTypes, setDamageValuesByTypes] = useState([]);
   const [damageValueAndTypeRows, setDamageValueAndTypeRows] = useState([]);
-
-  useEffect(() => {
-    let damageInstances = [
-      ["рубящий", 5],
-      ["излучение", 5],
-      ["рубящий", 10],
-    ]
-
-    setDamageInstances(damageInstances);
-  }, [])
 
   useEffect(() => {
     calculateDamage(damageInstances);

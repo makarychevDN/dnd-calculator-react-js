@@ -9,6 +9,7 @@ function DeskPanel(props) {
   const [damagePacksOfDices, setDamagePacksOfDices] = useState([]);
   const [hitDiceValue, setHitDiceValue] = useState(0);
   const [sortingMode, setSortingMode] = useState(0);
+  const [damageInstances, setDamageInstances] = useState([]);
 
   const [isNarrow, setIsNarrow] = useState(window.innerWidth < 700);
 
@@ -31,7 +32,7 @@ function DeskPanel(props) {
             <HitValuePanel character={props.character} diceValue={hitDiceValue} sortingMode={sortingMode}/> 
           </div>
           <div style={{flex: 1}}>
-            <CalculateDamagePanel/>
+            <CalculateDamagePanel damageInstances={damageInstances}/>
           </div>
         </div>
         <div id='the second row' className='generic-group-layout' style={{height: "100px", marginBottom: "20px"}}>
@@ -98,12 +99,20 @@ function DeskPanel(props) {
       diceMaxValue={abilityOption.getDicesMaxValue()}
       additionalValue={abilityOption.getAdditionalValue()}
       damageType={abilityOption.getDamageType()}
-      onSumCalculated={(sum, damageType) => console.log(sum + " " + damageType)}
+      onSumCalculated={(sum, damageType) => addDamageInstance(sum, damageType)}
     />;
 
     setDamagePacksOfDices(currentPack => {
       const newValues = [...currentPack];
       newValues.push(newDamagePackOfDices);
+      return newValues;
+    });
+  }
+
+  function addDamageInstance(damageType, sum){
+    setDamageInstances(currentDamageInstances => {
+      const newValues = [...currentDamageInstances];
+      newValues.push([damageType, sum]);
       return newValues;
     });
   }

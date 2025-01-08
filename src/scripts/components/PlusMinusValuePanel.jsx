@@ -6,11 +6,11 @@ function PlusMinusValuePanel(props) {
 
   return(
     <>
-        <div style={{width: "fit-content", textAlign: "center", marginRight: "0px", marginLeft: "10px", marginTop: "auto", marginBottom: "auto"}}>
-          <button className="generic-interactive-button" onClick={substract}>-</button>   
-          <input type="text" style={{textAlign: "center"}} className="generic-text-input" value={inputFieldValue} onInput={removeUnexpectedSymbols} />
-          <button className="generic-interactive-button" onClick={add}>+</button>
-        </div>
+      <div style={{width: "fit-content", textAlign: "center", marginRight: "0px", marginLeft: "10px", marginTop: "auto", marginBottom: "auto"}}>
+        <button className="generic-interactive-button" onClick={substract}>-</button>   
+        <input type="text" style={{textAlign: "center"}} className="generic-text-input" value={inputFieldValue} onInput={removeUnexpectedSymbols} />
+        <button className="generic-interactive-button" onClick={add}>+</button>
+      </div>
     </>
   );
 
@@ -22,11 +22,11 @@ function PlusMinusValuePanel(props) {
       .join("");
 
     while(correctedValue[0] == "0"){
-        correctedValue = correctedValue.slice(1);
+      correctedValue = correctedValue.slice(1);
     }
 
     if(!correctedValue){
-        correctedValue = 0;
+      correctedValue = 0;
     }
 
     setInputFieldValue(correctedValue);

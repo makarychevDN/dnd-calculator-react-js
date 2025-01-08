@@ -38,15 +38,19 @@ function loadCharacterJson(){
             new Array(
                 new Ability("удар топором",
                      null, 
-                     new AbilityOption("удар топором", "", 1, 6, 1)),
+                     new AbilityOption("удар топором", "рубящий", 1, 6, 1)),
 
                 new Ability("вжух", 
                     null, 
-                    new AbilityOption("вжух", "", 3, 10, 0)),
+                    new AbilityOption("лунный луч", "излучением", 3, 10, 0)),
 
                 new Ability("тычок вилкой", 
                     null, 
-                    new AbilityOption("тычок вилкой", "", 1, 4, 0)),
+                    new AbilityOption("тычок вилкой", "рубящий", 1, 4, 0)),
+
+                new Ability("огненный шар", 
+                    null, 
+                    new AbilityOption("огненный шар", "огненный", 9, 8, 0)),
             )
     )); 
 }

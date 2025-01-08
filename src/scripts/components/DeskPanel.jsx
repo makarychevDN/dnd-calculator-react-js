@@ -39,7 +39,7 @@ function DeskPanel(props) {
             <p></p>
             {hitTargetPackOfDices}
             {damagePacksOfDices}
-        </div>
+          </div>
         <div id="table panel" style={{display: "flex"}}>
           <div style={{width: "100%"}}>
             <div>
@@ -97,6 +97,8 @@ function DeskPanel(props) {
       diceCount={abilityOption.getDicesQuantity()} 
       diceMaxValue={abilityOption.getDicesMaxValue()}
       additionalValue={abilityOption.getAdditionalValue()}
+      damageType={abilityOption.getDamageType()}
+      onSumCalculated={(sum, damageType) => console.log(sum + " " + damageType)}
     />;
 
     setDamagePacksOfDices(currentPack => {

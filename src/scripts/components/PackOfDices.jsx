@@ -1,14 +1,14 @@
   import { useEffect, useState } from 'react';
   import DiceButton from './DiceButton'
 
-  function PackOfDices({labelText, diceCount, diceMaxValue, damageType, additionalValue, onSumCalculated, onDiceValueSelected, sortingMode}){
+  function PackOfDices({index, labelText, diceCount, diceMaxValue, damageType, additionalValue, onSumCalculated, onDiceValueSelected, sortingMode}){
     const [diceButtons, setDiceButtons] = useState([]);
     const [diceValues, setDiceValues] = useState([]);
 
     useEffect(() => spawnDices(diceCount, diceMaxValue), []);
     useEffect(() => {
       if(onSumCalculated != null){
-        onSumCalculated(damageType, calculateSum(diceValues, additionalValue));
+        onSumCalculated(index, damageType, calculateSum(diceValues, additionalValue));
       }
 
       if(onDiceValueSelected){

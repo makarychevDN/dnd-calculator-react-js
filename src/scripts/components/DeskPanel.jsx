@@ -83,36 +83,37 @@ function DeskPanel(props) {
         sortingMode={sortingMode}
       />);
     }, 0);
-
   }
 
   function resetAbilityPacksOfDices(){
     setDamagePacksOfDices([]);
+    setDamageInstances([]);
   }
 
   function throwDamagePackOfDices(abilityOption){
-    let newDamagePackOfDices = 
-    <PackOfDices 
-      key= {`${abilityOption.getName()} ${Date.now()} pack of dices`}
-      labelText={abilityOption.getName()} 
-      diceCount={abilityOption.getDicesQuantity()} 
-      diceMaxValue={abilityOption.getDicesMaxValue()}
-      additionalValue={abilityOption.getAdditionalValue()}
-      damageType={abilityOption.getDamageType()}
-      onSumCalculated={(sum, damageType) => addDamageInstance(sum, damageType)}
-    />;
-
     setDamagePacksOfDices(currentPack => {
-      const newValues = [...currentPack];
-      newValues.push(newDamagePackOfDices);
-      return newValues;
+      const index = currentPack.length; // Текущая длина состояния
+      const newDamagePackOfDices = (
+        <PackOfDices
+          key={`${abilityOption.getName()} ${Date.now()} pack of dices`}
+          index={index} // Передаём правильный индекс
+          labelText={abilityOption.getName()}
+          diceCount={abilityOption.getDicesQuantity()}
+          diceMaxValue={abilityOption.getDicesMaxValue()}
+          additionalValue={abilityOption.getAdditionalValue()}
+          damageType={abilityOption.getDamageType()}
+          onSumCalculated={(index, sum, damageType) => setDamageInstance(index, sum, damageType)}
+        />
+      );
+  
+      return [...currentPack, newDamagePackOfDices]; // Возвращаем новый массив
     });
   }
 
-  function addDamageInstance(damageType, sum){
+  function setDamageInstance(index, damageType, sum){
     setDamageInstances(currentDamageInstances => {
       const newValues = [...currentDamageInstances];
-      newValues.push([damageType, sum]);
+      newValues[index] = [damageType, sum];
       return newValues;
     });
   }

@@ -29,4 +29,3 @@ function AbilityButtons({abilities, onAbilityButtonClick}) {
 }
   
 export default AbilityButtons
-  

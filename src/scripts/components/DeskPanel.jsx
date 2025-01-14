@@ -92,11 +92,11 @@ function DeskPanel(props) {
 
   function throwDamagePackOfDices(abilityOption){
     setDamagePacksOfDices(currentPack => {
-      const index = currentPack.length; // Текущая длина состояния
+      const index = currentPack.length;
       const newDamagePackOfDices = (
         <PackOfDices
           key={`${abilityOption.getName()} ${Date.now()} pack of dices`}
-          index={index} // Передаём правильный индекс
+          index={index}
           labelText={abilityOption.getName()}
           diceCount={abilityOption.getDicesQuantity()}
           diceMaxValue={abilityOption.getDicesMaxValue()}
@@ -106,7 +106,7 @@ function DeskPanel(props) {
         />
       );
   
-      return [...currentPack, newDamagePackOfDices]; // Возвращаем новый массив
+      return [...currentPack, newDamagePackOfDices];
     });
   }
 
